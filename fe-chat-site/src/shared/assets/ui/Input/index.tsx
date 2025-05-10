@@ -1,4 +1,4 @@
-import { FC, forwardRef, HTMLProps, useImperativeHandle, useRef } from "react";
+import { forwardRef, HTMLProps, useImperativeHandle, useRef } from "react";
 import { FiMic, FiArrowRight } from "react-icons/fi";
 
 interface FloatingLabelInputProps extends Omit<HTMLProps<HTMLInputElement>, 'size'> {

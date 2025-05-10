@@ -1,5 +1,4 @@
 'use client'
-import Image from "next/image";
 import { MainViewProps } from "./types";
 import { FC, useState } from "react";
 import Input from "@/shared/assets/ui/Input";
@@ -34,7 +33,7 @@ const MainView: FC<MainViewProps> = ({ data, featured }) => {
  
       <main className="h-[70%]">
       {gptResponse?
-       <div className="text-white text-3xl">{gptResponse}</div> : <div className="flex flex-col gap-10 flex-grow">
+       <div className="text-white text-3xl overflow-y-auto h-[90%]">{gptResponse}</div> : <div className="flex flex-col gap-10 flex-grow">
       <h1 className="text-white text-4xl">Hi there!</h1>
       <h1 className="text-white text-5xl">What would you like to know?</h1>
       <h1 className="text-white text-2xl max-w-[60%]">Use one of the most common prompts below or ask your own question</h1>
@@ -43,7 +42,7 @@ const MainView: FC<MainViewProps> = ({ data, featured }) => {
       </main>
       <footer className="">
       <Input label={'Ask whatever you want'}
-      onChange={(e) => setText(e.target.value)}
+      onChange={(e) => setText((e.target as HTMLInputElement).value)}
       submitButton
       audio/>
       </footer>
