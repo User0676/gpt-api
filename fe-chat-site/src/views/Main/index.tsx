@@ -12,7 +12,7 @@ const MainView: FC<MainViewProps> = ({ data, featured }) => {
     if (!text.trim()) return;
 
     try {
-      const res = await fetch('http://localhost:3001/gpt', {
+      const res = await fetch('https://gpt-api-production-6216.up.railway.app/gpt', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text }),
