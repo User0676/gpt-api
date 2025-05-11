@@ -9,7 +9,6 @@ import {
   import { FiMic, FiMicOff, FiArrowRight } from "react-icons/fi";
   
   
-  // ---------- типы ----------
   interface FloatingLabelInputProps
     extends Omit<HTMLProps<HTMLInputElement>, "size"> {
     label: string;
@@ -22,7 +21,6 @@ import {
     audio?: boolean;
   }
   
-  // ---------- компонент ----------
   const Input = forwardRef<HTMLInputElement, FloatingLabelInputProps>(
     (
       {
@@ -44,14 +42,12 @@ import {
       const recognitionRef = useRef<SpeechRecognition | null>(null);
       const [recording, setRecording] = useState(false);
   
-      // пробрасываем ref наружу
       useImperativeHandle(ref, () => internalRef.current!);
   
       const widthClass = width === "full" ? "w-full" : `w-[${width}]`;
   
-      // -------- инициализация SpeechRecognition --------
       useEffect(() => {
-        if (!audio) return; // микрофон не нужен
+        if (!audio) return; 
   
         const SpeechRecognition =
   (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
@@ -66,9 +62,8 @@ import {
         recog.interimResults = false;
         recog.maxAlternatives = 1;
   
-        recog.onresult = (e) => {
+        recog.onresult = (e:any) => {
           const transcript = e.results[0][0].transcript;
-          // добавляем текст в конец текущего значения
           if (internalRef.current) {
             internalRef.current.value =
               (internalRef.current.value
